@@ -13,6 +13,12 @@ const puppeteer = require("puppeteer");
       item.innerText.trim()
     )
   );
+  const imgs = await page.evaluate(() =>
+    Array.from(document.querySelectorAll("div.img-inner-wrapper>a>img")).map(
+      img => img.src
+    )
+  );
   console.log(titles);
+  console.log(imgs);
   await browser.close();
 })();
